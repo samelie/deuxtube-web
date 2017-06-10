@@ -1,197 +1,156 @@
 @import "reset";
-@import "breakpoints";
-
-$marginb: 20px;
-
-#alhambra-app{
-  position: absolute;
-  top:0;
-  left:0;
-  margin-bottom: $marginb;
+* {
+    box-sizing: border-box;
 }
 
-@keyframes rotating {
-    from{
-        transform: rotate(360deg);
-    }
-    to{
-        transform: rotate(0deg);
-    }
+body {
+    font-family: "redhat-bold";
+    font-size: 22px;
 }
 
-@keyframes rotate-back-even {
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
+@font-face {
+    font-family: 'redhat-bold';
+    src: url('./assets/redhat/liberationmono-bold-webfont.woff') format('woff'), url('./assets/redhat/LiberationMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-$map-aspect:70.640545%;
+@font-face {
+    font-family: 'redhat';
+    src: url('./assets/redhat/liberationmono-regular-webfont.woff') format('woff'), url('./assets/redhat/LiberationMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
+.app {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-  }
+    width: 100vw;
+    height: 100vh;
+    &.is-over {
+        .deux-tube-info {
+            opacity: 1;
+        }
+    }
 }
 
-.app_desktop {
+.header--download {
+    background: url('/assets/images/button.png', true);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    &:hover {
+        background: url('/assets/images/button-hover.png', true);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    a {
+        text-decoration: none;
+        color: #222;
+        transition: line-height 0.3s;
+    }
+}
+
+.sq {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+
+#three {
     position: relative;
     width: 100vw;
     height: 100vh;
-    display: flex;
 }
 
-.location-cover{
-  background-attachment: local !important;
-}
-.appContent {
+.three-scene {
     position: relative;
+    width: 100vw;
     height: 100vh;
+    pointer-events: none;
+}
+
+.three-ctrls {
+    position: absolute;
+    bottom: 24px;
+    right: 10px;
+    z-index: 99;
+    cursor: pointer;
+    text-shadow: 0.5px 0px 0px white;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.deux-tube-info {
+    position: relative;
+    font-family: "redhat";
+    color: #111111;
+    text-shadow: 0.5px 0px 0px white;
+    line-height: 24px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.header {
+    position: relative;
+    width: 100vw;
+    height: auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-     align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 100%;
-    //margin-left: 2%;
-    //margin-bottom: 2%;
-    //background-color: rgba(70, 255, 0, 0.3);
+    &.is-over {
+        height: 80px;
+        //min-height: 80px;
+        .header--download {
+            visibility: visible;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.3s;
+            a {}
+        }
+    }
+    transition: height 0.3s;
 }
 
-
-.contentContainer {
-    position: relative;
-    margin-bottom: $marginb;
-}
-
-.tour--overlay,
-.tour--frame {
+.header--bg {
     position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 15%;
-    /* width: 70%;
-    height: 60%; */
-}
-
-.tour--overlay{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.tour--overlay--image{
-  position: absolute;
-  height: 100%;
-
-  &.marker--hidden{
-    display: none;
-  }
-  &.marker--visible{
-    display: block;
-  }
-  &.image--hidden{
-    display: none;
-  }
-  &.image--visible{
-    display: block;
-  }
-}
-
-.map--image {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("images/map_fixed.svg");
+    top:0;
+    left:0;
+    width:90px;
+    height:90px;
+    background: url('/assets/images/deux-tube-small.png', true);
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: left bottom;
+    background-position: center center;
 
 }
 
-.map--locations {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: $map-aspect;
-}
-
-.map__marker {
-  position:absolute;
-  background-color: rgba(0, 0, 0, 0);
-  height:6.8%;
-  width:3.7%;
-  border-radius: 50%;
-  cursor: pointer;
-
-  &.map--active{
-    background-color: rgba(0, 0, 0, 1);
-  }
-}
-
-
-.pinWheelsContainer {
-    position: relative;
-    height: 100vh;
-    width: 15%;
-    min-width: 100px;
-    display:flex;
-    align-items:center;
-    //background-color: rgba(255, 0, 0, 0.3);
-}
-
-
-.pinwheels{
-  position:relative;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.pinwheel--column{
-  position:relative;
-  width: 44%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.pinwheel__image {
+.about {
     position: relative;
     width: 100%;
-    transform-origin: 50% 50%;
-    @include aspect-ratio(536,536);
-    &:before{
-      position:absolute;
+    font-family: "redhat";
+    padding: 20px 10px 10px 20px;
+    color: #222;
+    a {
+        text-decoration: none;
     }
-    img {
-      transform: scale(1.24);
+    p {
+        margin-top: 10px;
+        color: #222;
+        margin-bottom: 10px;
     }
-
-
-    &.pinwheel--active{
-      animation: rotating 2s linear infinite;
-    }
-
 }

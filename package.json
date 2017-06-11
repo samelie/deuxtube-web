@@ -48,9 +48,9 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:css\" \"npm run start:js\"",
-    "start:js": "budo src/index.js:bundle.js --live --dir app --host 0.0.0.0 -- -t babelify --presets [ es2015 stage-0 stage-1 ] -t [ envify --NODE_ENV development ]",
+    "start:js": "budo src/index.js:bundle.js --live --dir . --host 0.0.0.0 -- -t babelify --presets [ es2015 stage-0 stage-1 ] -t [ envify --NODE_ENV development ]",
     "start:css": "gulp watch",
-    "build": "browserify src/index.js -t [ envify --NODE_ENV production ] -t babelify --presets [ es2015 stage-0 stage-1 ] | uglifyjs > app/bundle.js && gulp sass --production"
+    "build": "browserify src/index.js -t [ envify --NODE_ENV production ] -t babelify --presets [ es2015 stage-0 stage-1 ] | uglifyjs > bundle.js && gulp sass --production"
   },
   "browserify": {
     "transform": [

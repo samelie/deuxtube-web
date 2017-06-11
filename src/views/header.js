@@ -20,7 +20,7 @@ const Header = (auth, send) => {
         >
           <span class="header--title">Deux Tube</span>
           <span class="header--download">
-            <a href="" target="_blank">Download App for MacOSX</a>
+            <a href="" target="_blank">Download for MacOSX</a>
           </span>
 
         </header>

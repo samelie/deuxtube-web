@@ -11,6 +11,7 @@ const VideoDataLoader = () => {
       if (err) {
         no(err)
       } else {
+        console.log(data);
         yes(data.map(str=>JSON.parse(str)))
       }
     })
@@ -21,9 +22,12 @@ module.exports = (state, emitter) => {
   state.videos = []
   VideoDataLoader().then(data => {
     data = data.map(d=>{
-      d.id = d.id[0]
-      return d
-    })
+      if(d.id){
+        d.id = d.id[0]
+        return d
+      }
+      return null
+    }).filter(r=> !!r)
     state.videos = data
     emitter.emit('render')
   })

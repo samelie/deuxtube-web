@@ -10,14 +10,14 @@ body {
 
 @font-face {
     font-family: 'redhat-bold';
-    src: url('./assets/redhat/liberationmono-bold-webfont.woff') format('woff'), url('./assets/redhat/LiberationMono-Bold.ttf') format('truetype');
+    src: url('/assets/redhat/liberationmono-bold-webfont.woff') format('woff'), url('/assets/redhat/LiberationMono-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'redhat';
-    src: url('./assets/redhat/liberationmono-regular-webfont.woff') format('woff'), url('./assets/redhat/LiberationMono-Regular.ttf') format('truetype');
+    src: url('/assets/redhat/liberationmono-regular-webfont.woff') format('woff'), url('/assets/redhat/LiberationMono-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -53,7 +53,6 @@ body {
     a {
         text-decoration: none;
         color: #222;
-        transition: line-height 0.3s;
     }
 }
 
@@ -105,7 +104,7 @@ body {
 .header {
     position: relative;
     width: 100vw;
-    height: auto;
+    height: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;

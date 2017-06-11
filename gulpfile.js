@@ -28,8 +28,8 @@ gulp.task('sass', function() {
   }))*/
 
   .pipe(inline_base64({
-    baseDir: "app/",
-    maxSize: 14 * 1024,
+    baseDir: __dirname,
+    maxSize: 800 * 1024,
     debug: true
   }))
 
@@ -39,7 +39,7 @@ gulp.task('sass', function() {
     includePaths: [resetCSS]
   }).on('error', sass.logError))
 
-  .pipe(gulp.dest('./app'))
+  .pipe(gulp.dest('.'))
 })
 
 //the development task

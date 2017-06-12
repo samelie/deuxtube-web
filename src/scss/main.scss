@@ -119,7 +119,9 @@ body {
             align-items: center;
             opacity: 1;
             transition: opacity 0.3s;
-            a {}
+            a {
+                line-height: 80px;
+            }
         }
     }
     transition: height 0.3s;

@@ -2,7 +2,8 @@ import { cover, contain } from 'intrinsic-scale';
 import { StyleSheet, css } from 'aphrodite';
 
 let baseRoute = "";
-if (process.env.NODE_ENV === "production") {
+const isProd = process.env.NODE_ENV === "production"
+if (isProd) {
 baseRoute = "rad.-deuxtube"
 } else if (process.env.NODE_ENV === "github") {
 
@@ -21,7 +22,10 @@ function logger(state, emitter) {
     console.log('event', messageName, data)
   })
 }
-app.use(logger);
+
+if(!isProd){
+  app.use(logger);
+}
 app.use(require('./models/videos'))
 
 //VIEWS
@@ -29,30 +33,6 @@ var headerView = require('./views/header')
 var threeView = require('./views/three')
 var aboutView = require('./views/about')
 
-/*app.use((state, emitter)=>{
-  console.log(emitter.on);
-})*/
-
-
-
-/*//APP MODEL
-app.model({
-  state: {
-  },
-  reducers: {
-    resize: function(state, data) {
-    },
-  },
-  effects: {},
-  subscriptions: {
-    'called-once-when-the-app-loads': function(send, done) {
-      window.addEventListener('resize', () => (send('resize', done)), false)
-      send('resize', done)
-      send('loaded', done)
-    }
-  }
-})
-*/
 const onload = (el) => {
   const header =  el.querySelector('.header')
   header.addEventListener('mouseover', (e) => {

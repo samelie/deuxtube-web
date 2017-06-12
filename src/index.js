@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 let baseRoute = "";
 const isProd = process.env.NODE_ENV === "production"
 if (isProd) {
-baseRoute = "rad.-deuxtube"
+baseRoute = "rad.wtf-deuxtube"
 } else if (process.env.NODE_ENV === "github") {
 
 }

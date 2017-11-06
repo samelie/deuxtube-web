@@ -1,10 +1,10 @@
 import { cover, contain } from 'intrinsic-scale';
 import { StyleSheet, css } from 'aphrodite';
 
-let baseRoute = "";
+let baseRoute = "*";
 const isProd = process.env.NODE_ENV === "production"
 if (isProd) {
-baseRoute = "rad.wtf-deuxtube"
+//baseRoute = "rad.wtf-deuxtube"
 } else if (process.env.NODE_ENV === "github") {
 
 }
